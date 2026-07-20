@@ -39,12 +39,33 @@ Sunhaven Care's network grew organically into a flat, unsegmented architecture â
 
 # Architecture
 
+## Traffic Segments
+
 | Segment | Description | 
 | --- | --- | 
 | Clinical | Nurse call systems, medical records, clinical applications | 
 | Corporate | Staff Devices, Back Office, Admin |
 | Resident | Guest/Resident Wi-Fi |
 | IoT | Nurse call sensors, building automation, smart devices |
+
+## Capability Menu
+
+| SCapability | Priority | 
+| --- | --- | 
+| Segmentation | Basic (B) | 
+| Firewall / IDS | Basic (B) |
+| Identity and Access Management | Advanced (A) |
+| VPN / High Availability | Advanced/Basic (A/B) |
+
+# Technology Stack
+
+* Network Simulator: GNS3 (+ optional EVE-NG)
+* Cloud: Small cloud instance (optional)
+* Automation: Ansible (stretch goal)
+* Compliance Frameworks: Essential Eight, ISO 27001
+
+
+
 
 
 
