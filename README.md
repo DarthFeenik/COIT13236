@@ -1,39 +1,45 @@
 # COIT13236
 ## CQU Project 2026, Term 2
 
-# AC-1 Secure Multi-Site Network for an Aged-Care Provider
+# PD-1 Secure Multi-Office Network at a Mine Site
 
 ## Project Overview
 
-| Field | Details | 
-| --- | --- | 
-| Client | Sunhaven Care | 
-| Sites | 4 Sites + ~300 staff |
-| Platform | GNS3 |
-| Track | Network lead + security |
-| Standards | Essential 8, ISO 270001 |
-| Lean-In Units | NET, NETSEC, SYSADMIN, CLOUD |
+| Field         | Details                                      |
+| ------------- | -------------------------------------------- |
+| Client        | PrimeCore Minerals                           |
+| Sites         | Brisbane HQ + 4 Mine-Site Offices            |
+| Users         | ~600 staff, contractors and visitors         |
+| Platform      | EVE-NG                                       |
+| Track         | Network-led + Security                       |
+| Standards     | Essential Eight, ISO/IEC 27001               |
+| Lead-In Units | VM, NET, NETSEC, SYSADMIN, CLOUD, WIRELESS   |
 
 ## The Problem
 
-Sunhaven Care's network grew organically into a flat, unsegmented architecture — nurse-call systems, staff devices, resident Wi-Fi and back-office applications all share the same network. This creates serious risks to:
-* Clinical availability — critical systems can be disrupted by unrelated traffic
-* Resident data privacy — no separation between IoT, clinical, and corporate systems
-* Security posture — no firewall enforcement, no access control, no monitoring
+PrimeCore Minerals currently operates flat networks at its Brisbane headquarters and mine-site offices, with each site using independent internet connections. As the company expands, the existing network does not provide sufficient security, scalability or resilience for additional employees, contractors and visitors.\
+
+The current network creates multiple problems:
+-
+-
+-
+-
 
 ## Minimum Viable Outcome (MVP)
 
-* [ ] Two fully built and routed sites
-* [ ] Network segmentation (VLANs per traffic class)
+* [ ] Two fully built and routed sites: Brisbane HQ and Mine-Site Office A
+* [ ] Network segmentation using Employee, Visitor/Contractor and Management VLANs
 * [ ] Firewall rules enforcing cross-segment policies
-* [ ] Authentication enforcement (IAM)
-* [ ] Network monitoring in place
+* [ ] Visitor network with internet access only
+* [ ] Employee login and access control
 * [ ] Live demo: permitted vs. denied cross-segment traffic (denied paths logged)
+* [ ] Centralised monitoring and logging
 
 ## Stretch Goals
 
 * [ ] Site-to-Site (S2S) VPN with failover
-* [ ] Network Access Control (NAC)
+* [ ] Network Access Control (NAC) using 802.1X / RADIUS
+* [ ] Traffic prioritisation and QoS
 * [ ] Ansible-based configuration management
 * [ ] Simulated attack scenario + remediation walkthrough
 
@@ -41,28 +47,33 @@ Sunhaven Care's network grew organically into a flat, unsegmented architecture �
 
 ## Traffic Segments
 
-| Segment | Description | 
-| --- | --- | 
-| Clinical | Nurse call systems, medical records, clinical applications | 
-| Corporate | Staff Devices, Back Office, Admin |
-| Resident | Guest/Resident Wi-Fi |
-| IoT | Nurse call sensors, building automation, smart devices |
+| Segment            | Description                                                       |
+| ------------------ | ----------------------------------------------------------------- |
+| Employee VLAN 10   | Staff workstations and access to approved internal services       |
+| Visitor VLAN 20    | Contractors and visitors with internet-only access                |
+| Management VLAN 99 | Restricted administration of routers, switches and firewalls      |
+| Internal Services  | RADIUS, syslog, monitoring and other approved company services    |
 
 ## Capability Menu
 
-| SCapability | Priority | 
-| --- | --- | 
-| Segmentation | Basic (B) | 
-| Firewall / IDS | Basic (B) |
-| Identity and Access Management | Advanced (A) |
-| VPN / High Availability | Advanced/Basic (A/B) |
+| Capability                    | Priority             |
+| ------------------------------ | -------------------- |
+| Network Segmentation          | Basic (B)            |
+| Firewall / IDS                | Basic (B)            |
+| Identity and Access Management | Advanced (A)         |
+| Monitoring and Logging       | Basic (B)             |
+| VPN / High Availability       | Advanced/Basic (A/B) |
 
 # Technology Stack
 
-* Network Simulator: GNS3 (+ optional EVE-NG)
-* Cloud: Small cloud instance (optional)
-* Automation: Ansible (stretch goal)
-* Compliance Frameworks: Essential Eight, ISO 27001
+- Network Emulator: EVE-NG
+- Virtualisation Environment: Proxmox / Virtual Machines
+- Network Security: Stateful firewall and VLAN segmentation
+- Authentication: RADIUS / 802.1X
+- Monitoring and Logging: Centralised Syslog and Network Monitoring
+- Secure Site Connectivity: Site-to-Site VPN
+- Automation: Ansible (stretch goal)
+- Compliance Frameworks: Essential Eight, ISO/IEC 27001
 
 
 
