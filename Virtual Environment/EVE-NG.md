@@ -4,13 +4,21 @@ Installed on Proxmox
 
 Proxmox
 └── EVE-NG VM
+
     ├── HQ router/firewall
+    
     ├── Mine-site router/firewall
+    
     ├── HQ managed switch
+    
     ├── Mine-site managed switch
+    
     ├── Server (Ubuntu)
+    
     ├── HQ client(s)
+    
     └── Mine-site client(s)
+    
 
 EVE-NG VM Settings
 
