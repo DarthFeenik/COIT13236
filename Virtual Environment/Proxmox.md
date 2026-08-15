@@ -23,10 +23,12 @@ Password - F*****
 ## Jared Williams
 
 Username - jared
+
 Password - C*****
 
 ## Duane Van Italie
 
 Username - duane
+
 Password - C*****
 
