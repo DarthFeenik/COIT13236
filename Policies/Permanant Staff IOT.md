@@ -60,7 +60,7 @@ Staff must not use PrimeCore devices, accounts, networks, or internet services f
 
 Any activity that breaches legislation, workplace policy, contractual obligations, or PrimeCore’s Code of Conduct.
 
-7. Security and Remote Work
+## 7. Security and Remote Work
 
 When working remotely, staff must:
 
