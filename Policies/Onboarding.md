@@ -1,2 +1,0 @@
-# PrimeCore IOT Onboarding
-
