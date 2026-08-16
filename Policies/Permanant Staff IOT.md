@@ -97,13 +97,18 @@ Staff must report the following to PrimeCore IT or their manager as soon as poss
 
 Prompt reporting will be treated as responsible behaviour and helps reduce harm.
 
-11. Breaches of This Policy
+## 11. Breaches of This Policy
 
 Failure to comply with this policy may result in restricted access, removal of issued equipment, disciplinary action, recovery of unreasonable costs, or other action consistent with PrimeCore workplace procedures and applicable law.
 
-12. Staff Acknowledgement
+## 12. Staff Acknowledgement
 
 All permanent staff issued with PrimeCore equipment must confirm that they have read, understood, and agree to comply with this policy.
+
+
+
+
+
 
 
 Employee name: ______________________________
@@ -111,6 +116,11 @@ Employee name: ______________________________
 Signature: ___________________________________
 
 Date: ________________________________________
+
+
+
+
+
 
 
 
