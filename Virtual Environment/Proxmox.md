@@ -7,6 +7,12 @@ CPU - Intel Xeon E5
 RAM - 64GB DDR4 ECC RAM
 SSD - RAID 0 500GB
 
+# Remoted Access to Proxmox
+
+## Need Tailscale account
+
+Download and sign in to the Tailscale app. Then use a web browser to connect to the proxmox server
+
 # Proxmox Server
 
 Proxmox V 9.2.10 installed
