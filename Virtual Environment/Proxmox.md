@@ -2,10 +2,10 @@
 
 # Server Specifications
 
-Device - Dell Precision Tower T5810
-CPU - Intel Xeon E5
-RAM - 64GB DDR4 ECC RAM
-SSD - RAID 0 500GB
+* Device - Dell Precision Tower T5810
+* CPU - Intel Xeon E5
+* RAM - 64GB DDR4 ECC RAM
+* SSD - RAID 0 500GB
 
 # Remoted Access to Proxmox
 
@@ -38,3 +38,14 @@ Username - duane
 
 Password - C*****
 
+# Pfsense
+
+## Installing Pfsense on EVE-NG
+
+* Download the iso image from pfsense.org/download
+* Image name is "netgate-installer-v1.2-RELEASE-amd64.iso"
+* SSH in to EVE to create a new directory
+  mkdir -p /opt/unetlab/addons/qemu/pfsense-2.8
+* Use WinSCP on Windows computer to upload the iso image to
+  /opt/unetlab/addons/qemu/pfsense-2.8/
+* 
