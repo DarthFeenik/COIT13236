@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Policy Viewer</title>
+</head>
+<body>
+
+<h2>Policy List</h2>
+
+<div id="userDisplay"></div>
+<button onclick="logout()">Logout</button>
+
+<table border="1" id="fileTable">
+    <tr>
+        <th>File Name</th>
+        <th>Status</th>
+    </tr>
+</table>
+
+<script>
+let loggedInUser = localStorage.getItem("loggedInUser");
+
+if (!loggedInUser) {
+    window.location = "login.html";
+}
+
+document.getElementById("userDisplay").innerText =
+    "Logged in as: " + loggedInUser;
+
+let readData = {};
+let renewalData = {};
+
+async function loadReads() {
+    const csv = await fetch("/reads").then(r => r.text());
+    const rows = csv.trim().split("\n").slice(1);
+
+    for (let row of rows) {
+        const [file, user, date] = row.split(",");
+        if (!readData[file]) readData[file] = {};
+        readData[file][user] = date;
+    }
+}
+
+async function loadRenewal() {
+    const csv = await fetch("/renewal").then(r => r.text());
+    const rows = csv.trim().split("\n").slice(1);
+
+    for (let row of rows) {
+        const [file, hours] = row.split(",");
+        renewalData[file] = parseInt(hours);
+    }
+}
+
+function isExpired(fileName) {
+    if (!readData[fileName] || !readData[fileName][loggedInUser]) return true;
+
+    const lastRead = new Date(readData[fileName][loggedInUser]);
+    const hoursValid = renewalData[fileName] || 0;
+
+    const expiryTime = new Date(lastRead.getTime() + hoursValid * 3600000);
+    const now = new Date();
+
+    return now > expiryTime;
+}
+
+async function loadFiles() {
+    await loadReads();
+    await loadRenewal();
+
+    const response = await fetch("/list");
+    const text = await response.text();
+    const files = text.trim().split("\n");
+
+    const table = document.getElementById("fileTable");
+
+    for (let file of files) {
+        const row = document.createElement("tr");
+
+        // hyperlink
+        const nameCell = document.createElement("td");
+        const link = document.createElement("a");
+        link.href = `${POLICY_FOLDER}/${file}`;
+        link.target = "_blank";
+        link.innerText = file;
+        nameCell.appendChild(link);
+
+        const actionCell = document.createElement("td");
+        const btn = document.createElement("button");
+
+        if (isExpired(file)) {
+            btn.innerText = "Policy read";
+            btn.onclick = () => markRead(file, btn);
+        } else {
+            btn.innerText = "File read";
+            btn.disabled = true;
+        }
+
+        actionCell.appendChild(btn);
+
+        row.appendChild(nameCell);
+        row.appendChild(actionCell);
+        table.appendChild(row);
+    }
+}
+
+async function markRead(fileName, button) {
+    const now = new Date().toISOString().replace("T", " ").split(".")[0];
+    const entry = `${fileName},${loggedInUser},${now}\n`;
+
+    await fetch("/record_read", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: entry
+    });
+
+    button.innerText = "File read";
+    button.disabled = true;
+}
+
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location = "login.html";
+}
+
+loadFiles();
+</script>
+
+</body>
+</html>
