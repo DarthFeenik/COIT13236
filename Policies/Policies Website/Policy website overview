@@ -1,0 +1,37 @@
+Website features
+1. hosts all companies policies in one location
+2. easy for users to navigate to and view policies and see if they are up to date
+3. policy renewal feature allows company to confirm users are re-reading policies as per the renewal timeline
+4. Ongoing logging of users reading policies along with date/time - inline with ISO27001 audits
+5. automated policy check for company. Managers don't have to ask or assume users have read the policy
+
+
+Website design
+  (Working)
+1. hosted on Linux server with python and server.py script always running
+2. server.py script scans 'policies-folder' for any .pdf/.doc/.docx files and if found, displays them on the website
+3. When user logs in, the filereads.csv file is scanned to confirm they have read the policy, if they haven't, the 'Read Policy' button is active.
+
+   (Not Working)
+  3.1 If they have read it, it scans the date/time when it was read and compares this to the policyrenewal.csv file. If the date/time is longer then the policy renewal date then the 'Read Policy' button is displayed for the user.
+4. Date and time recording is currently UTC time instead of server/PC time (which is set to BNE time)
+
+
+Out of Scope
+1. Website and AD sync to confirm user login credentials
+    1.1 using a accounts.csv file to show user login without having to setup AD and AD accounts for this project
+2. Company logo displayed on website
+    2.1 website graphical design left out of project
+3. If policy needs to be renewed, email sent to user
+    3.1 email setup is outside of this project scope
+4. Manager report from filereads.csv file/s to show who has read polices or who needs to renew reading of policies
+    4.1 report design (e.g. PowerBI dashboard) is outside of the project scope
+
+
+Policies website overview
+1. User logs in
+2. Policies displayed on website
+   2.1 If user hasn't read policy, they can click on the policy and read it
+      2.11 Once user has read the policy, they click the button saying they have read it 
+   2.2 If user has read the policy and it is within the policy renewal timeframe, it says 'Policy read on DD/MM/YYYY'
+      2.21 If date is outside of policy renewal timeframe, the 'Read Policy' button is shown again
