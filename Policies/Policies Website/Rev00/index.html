@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Policy Viewer</title>
+</head>
+<body>
+
+<h2>Policy List</h2>
+
+<div id="userDisplay"></div>
+<button onclick="logout()">Logout</button>
+
+<table border="1" id="fileTable">
+    <tr>
+        <th>File Name</th>
+        <th>Action</th>
+    </tr>
+</table>
+
+<script>
+let loggedInUser = localStorage.getItem("loggedInUser");
+
+if (!loggedInUser) {
+    window.location = "login.html";
+}
+
+document.getElementById("userDisplay").innerText =
+    "Logged in as: " + loggedInUser;
+
+async function loadFiles() {
+    const response = await fetch("/list");
+    const text = await response.text();
+    const files = text.trim().split("\n");
+
+    const table = document.getElementById("fileTable");
+
+    for (let file of files) {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.innerText = file;
+
+        const actionCell = document.createElement("td");
+        const btn = document.createElement("button");
+        btn.innerText = "Policy read";
+        btn.onclick = () => markRead(file, btn);
+
+        actionCell.appendChild(btn);
+
+        row.appendChild(nameCell);
+        row.appendChild(actionCell);
+        table.appendChild(row);
+    }
+}
+
+async function markRead(fileName, button) {
+    const now = new Date().toISOString().replace("T", " ").split(".")[0];
+    const entry = `${fileName},${loggedInUser},${now}\n`;
+
+    await fetch("/record_read", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: entry
+    });
+
+    button.innerText = "Policy has been read on " + now;
+    button.disabled = true;
+}
+
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location = "login.html";
+}
+
+loadFiles();
+</script>
+
+</body>
+</html>
