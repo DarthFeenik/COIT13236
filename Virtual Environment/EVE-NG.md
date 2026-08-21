@@ -59,3 +59,9 @@ Now use the web browser to connect to EVE to add pfsense node in to the virtual 
 * RAM:         4096 MB
 * Ethernet:    4
 * Console:     VNC
+
+## VNC Client
+
+Chrome wont play nice with the VNC so need to install a dedicated program.
+
+I installed TightVNC to SSH in to pfsense to install it.
