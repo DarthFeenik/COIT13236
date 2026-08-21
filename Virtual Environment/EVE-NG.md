@@ -65,3 +65,15 @@ Now use the web browser to connect to EVE to add pfsense node in to the virtual 
 Chrome wont play nice with the VNC so need to install a dedicated program.
 
 I installed TightVNC to SSH in to pfsense to install it.
+
+192.168.1.198
+       │
+       │ TCP 32769 ✓
+       ▼
+EVE-NG 192.168.1.186
+       │
+       ▼
+QEMU VNC server ✓
+       │
+       ▼
+PC-FW-1 / pfSense
