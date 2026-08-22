@@ -104,6 +104,10 @@ Connect to pfsense using TightVNC
 
 <img width="736" height="413" alt="image" src="https://github.com/user-attachments/assets/87c33ea5-ad00-4cf3-9169-754471d7c283" />
 
+<img width="710" height="390" alt="image" src="https://github.com/user-attachments/assets/707a6d35-ccf2-4bc5-baa5-e256bcfb5892" />
+
+<img width="728" height="412" alt="image" src="https://github.com/user-attachments/assets/4c0fd5dd-e89d-4704-b58d-dd468a75c5c5" />
+
 
 
 
