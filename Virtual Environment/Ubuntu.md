@@ -39,22 +39,15 @@ Then follow these steps to run the installer;
 
 ## Ubuntu Server Config
 
-| Name:  | PC-SRV-LNX-1 |
-| Image:  | linux-ubuntu-server-24.04.4 |
-| CPU:    | 2 |
-| RAM:    | 4096 MB |
-| Ethernet:  | 1 |
-| Console:    | VNC |
-
 
 | Field         | Details                                      |
 | ------------- | -------------------------------------------- |
-| Name        | PrimeCore Minerals                           |
-| Image         | Brisbane HQ + 4 Mine-Site Offices            |
-| CPU         | ~600 staff, contractors and visitors         |
-| RAM      | EVE-NG                                       |
-| Ethernet         | Network-led + Security                       |
-| Console     | Essential Eight, ISO/IEC 27001               |
+| Name        | PC-SRV-LNX-1                           |
+| Image         | linux-ubuntu-server-26.04            |
+| CPU         | 2         |
+| RAM      | 4096 MB                                       |
+| Ethernet         | 1                       |
+| Console     | VNC               |
 
 
 
