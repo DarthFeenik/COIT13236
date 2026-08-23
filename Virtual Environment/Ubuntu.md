@@ -52,7 +52,26 @@ Then follow these steps to run the installer;
 | Ethernet         | 1                       |
 | Console     | VNC               |
 
+## Server Installation
 
+Complete the steps in the ubuntu server installation
+
+* Try or Install Ubuntu Server
+* Keyboard - English (US)
+* Installation Type - Ubuntu Server
+* Network - ens3
+* Proxy - Leave Blank
+* Mirror - Default
+* Storage - Use entire disk
+* User details;
+| Field         | Details                                      |
+| ------------- | -------------------------------------------- |
+| Your Name        | Lab Admin                           |
+| Server Name         | srv-lnx-01            |
+| Username         | labadmin         |
+| Password      | Coit13236                                       |
+* Ubuntu Pro - Skip for now
+* SSH - [x] Install OpenSSH Server
 
 
 
