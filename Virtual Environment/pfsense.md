@@ -100,7 +100,53 @@ Had to change the IP Range from 192.168.1.1 to 10.10.10.1 to stop the EVE networ
 
 <img width="710" height="390" alt="image" src="https://github.com/user-attachments/assets/707a6d35-ccf2-4bc5-baa5-e256bcfb5892" />
 
-<img width="728" height="412" alt="image" src="https://github.com/user-attachments/assets/4c0fd5dd-e89d-4704-b58d-dd468a75c5c5" />
+
+## DO NOT SELECT REBOOT
+
+<img width="730" height="411" alt="image" src="https://github.com/user-attachments/assets/65797d71-7724-43fa-a347-2a30ebe0d86e" />
+
+## Select Shell to avoid install issues
+
+If you reboot the installer without removing "cdrom.iso" from EVE it will just run the installer again and cause the pfsense installation to become corrupted.
+
+Choose to run "Shell"
+
+<img width="735" height="418" alt="image" src="https://github.com/user-attachments/assets/00ebc280-c9d8-4a94-ada7-30c1de839659" />
+
+
+The type the command - poweroff
+
+<img width="679" height="476" alt="image" src="https://github.com/user-attachments/assets/a81e8c93-f00b-4deb-97f9-97fcd5fe9930" />
+
+## After pfsense installation
+
+After pfsense has been installed SSH back in to EVE-NG
+
+Find where the virtioa.qcow2 has been installed - find /opt/unetlab/tmp -name virtioa.qcow2 -type f -ls
+
+<img width="1309" height="147" alt="image" src="https://github.com/user-attachments/assets/ce41b65c-baae-42bf-b3cf-020bc3c6ee15" />
+
+Change the directory to the folder that contains the correct "virtioa.qcow2"
+
+** NOTE - Due to previous issues there are 2 versions installed here, one with 197KB of data and one with 1.9GB of data. the larger file is the correct one.
+
+Verify the correct image by running below commands
+
+<img width="1800" height="433" alt="image" src="https://github.com/user-attachments/assets/89d98b10-d7c2-4443-a69d-037b243a83d7" />
+
+Finally we need to commit the image we have installed to pfsense, then remove the installer to avoid future issues, fix the permissions for EVE-NG and verify it has all worked with no issues.
+
+
+<img width="1438" height="314" alt="image" src="https://github.com/user-attachments/assets/93bf524a-26d7-49dc-aeda-102ba6211505" />
+
+
+Once installation is successful and the cdrom.iso has been removed. Remote back into EVE-NG and start the firewall. The firewall should boot and then make you change the default admin password.
+
+The new password is "coit13236"
+
+
+
+
 
 
 
