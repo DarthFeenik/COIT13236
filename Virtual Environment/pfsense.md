@@ -65,14 +65,6 @@ Chrome wont play nice with the VNC so need to install a dedicated program.
 
 I installed TightVNC to SSH in to pfsense to install it.
 
-EVE-NG Pfsense settings
-
-| Name | PC-FW-1 |
-| Image | pfsense-2.8 | 
-| CPU | 2 |
-| RAM | 4096MB |
-| Console | VNC |
-
 Connect to pfsense using TightVNC
 
 * 192.168.1.186::32769
