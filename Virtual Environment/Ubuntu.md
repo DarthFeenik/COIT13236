@@ -35,6 +35,25 @@ Then follow these steps to run the installer;
 
 <img width="1388" height="239" alt="image" src="https://github.com/user-attachments/assets/e5a8b533-1acf-428f-bbcd-fee5986f535f" />
 
+# Install Ubuntu Server on EVE-NG
+
+## Ubuntu Server Config
+
+|Name:  |     PC-SRV-LNX-1|
+|Image:  |    linux-ubuntu-server-24.04.4|
+|CPU:  |      2|
+|RAM:  |      4096 MB|
+|Ethernet: |  1|
+|Console:  |  VNC|
+
+
+
+
+
+
+
+
+
 
 # Ubuntu Desktop
 
