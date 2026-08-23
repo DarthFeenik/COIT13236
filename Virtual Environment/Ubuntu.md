@@ -39,12 +39,12 @@ Then follow these steps to run the installer;
 
 ## Ubuntu Server Config
 
-| Name: | PC-SRV-LNX-1 |
-| Image: | linux-ubuntu-server-24.04.4 |
-| CPU: | 2 |
-| RAM: | 4096 MB |
-| Ethernet: | 1 |
-| Console: | VNC |
+| Name:  | PC-SRV-LNX-1 |
+| Image:  | linux-ubuntu-server-24.04.4 |
+| CPU:    | 2 |
+| RAM:    | 4096 MB |
+| Ethernet:  | 1 |
+| Console:    | VNC |
 
 
 
