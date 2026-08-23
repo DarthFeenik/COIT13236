@@ -47,6 +47,14 @@ Then follow these steps to run the installer;
 | Console:    | VNC |
 
 
+| Field         | Details                                      |
+| ------------- | -------------------------------------------- |
+| Name        | PrimeCore Minerals                           |
+| Image         | Brisbane HQ + 4 Mine-Site Offices            |
+| CPU         | ~600 staff, contractors and visitors         |
+| RAM      | EVE-NG                                       |
+| Ethernet         | Network-led + Security                       |
+| Console     | Essential Eight, ISO/IEC 27001               |
 
 
 
