@@ -1,4 +1,6 @@
 # Ubuntu Installation on to EVE-NG
+* Please Note: Some of the image files use have incorrect linux directories. Follow the text instructions for proper installation of linux server and desktop.
+
 
 # Ubuntu Server
 
