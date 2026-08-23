@@ -81,7 +81,10 @@ Connect to pfsense using TightVNC
 
 <img width="730" height="412" alt="image" src="https://github.com/user-attachments/assets/8a87b1d3-d72c-44b1-9f38-04666787f1fd" />
 
-<img width="729" height="412" alt="image" src="https://github.com/user-attachments/assets/53225b37-3d48-42cc-8623-c5915b66a61d" />
+Had to change the IP Range from 192.168.1.1 to 10.10.10.1 to stop the EVE network from clashing with my home network.
+
+<img width="720" height="404" alt="image" src="https://github.com/user-attachments/assets/8fd8bb24-d70a-4df7-95f6-a9921fa78722" />
+
 
 <img width="736" height="415" alt="image" src="https://github.com/user-attachments/assets/8b50f334-44f4-424d-9c73-bf0048c955ab" />
 
