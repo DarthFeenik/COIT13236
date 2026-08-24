@@ -104,6 +104,7 @@ Then follow these steps to run the installer;
 <img width="1402" height="318" alt="image" src="https://github.com/user-attachments/assets/087d6ba7-8be8-4182-b62c-49f0fbb52f31" />
 
 
+<img width="1590" height="734" alt="image" src="https://github.com/user-attachments/assets/f1fb758e-5d9d-4217-bab6-783a1f81c3b0" />
 
 
 
