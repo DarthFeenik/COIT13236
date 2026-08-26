@@ -42,7 +42,7 @@ The following aliases have been created in pfSense in preparation for the VLAN f
 
 The `INTERNAL_NETWORKS` alias has also been created. It groups the trusted and restricted PCM networks together so that firewall rules can reference them using a single alias.
 
-The alias contains:
+## The alias
 
 - `192.168.10.0/24` Employee LAN
 - `192.168.11.0/24` Employee Wi-Fi
@@ -54,7 +54,7 @@ The alias contains:
 - `192.168.91.0/24` Backup
 - `192.168.99.0/24` Network Management
 
-The Visitor network is intentionally excluded so that visitor traffic can be blocked from accessing internal PCM networks.
+The Visitor network `192.168.20.0` is intentionally excluded so that visitor traffic can be blocked from accessing internal PCM networks.
 
 ## Implemented Port Aliases
 
@@ -307,7 +307,10 @@ Higher QoS may later be applied to video conferencing traffic to prioritise voic
 
 The IP and Port aliases have been implemented in pfSense.
 
-<img width="1273" height="851" alt="Screenshot 2026-08-26 145350" src="https://github.com/user-attachments/assets/fe6103d4-5c10-4ed5-acf9-b7da0aa379b8" />
+- pfSense web page showing the firewall aliases ports configured for services such as, web traffic, DNS, SSH and HTTPS. 
+- pfSense web page showing the firewall aliases IPs configured for the VLAN networks. The `INTERNAL_NETWORK` alias groups together the PCM networks. 
 
-<img width="1471" height="1069" alt="Screenshot 2026-08-26 145414" src="https://github.com/user-attachments/assets/c6b3c16c-33a8-469f-92bd-ba5900533922" />
+<img width="800" alt="Screenshot 2026-08-26 145350" src="https://github.com/user-attachments/assets/fe6103d4-5c10-4ed5-acf9-b7da0aa379b8" />
 
+
+<img width="800" alt="Screenshot 2026-08-26 145414" src="https://github.com/user-attachments/assets/c6b3c16c-33a8-469f-92bd-ba5900533922" />
