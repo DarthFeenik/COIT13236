@@ -254,7 +254,6 @@ This rule prevents visitors from accessing employee, server, printer, CCTV, IoT,
 | Logging | Enabled |
 | Description | Block Unauthorised IoT Access to Internal Networks |
 
-Required IoT services will be explicitly permitted above this rule when those requirements are confirmed.
 
 ### R12 - CCTV Access to Required Server Services
 
@@ -286,7 +285,6 @@ Required IoT services will be explicitly permitted above this rule when those re
 | Logging | TBC |
 | Description | Allow Required Backup and Replication Traffic |
 
-Bandwidth limits and lower QoS may later be applied to backup traffic during working hours.
 
 ### R14 - Video Conferencing Access
 
@@ -306,4 +304,10 @@ Bandwidth limits and lower QoS may later be applied to backup traffic during wor
 Higher QoS may later be applied to video conferencing traffic to prioritise voice and video services.
 
 ## Current Implementation Status
+
+The IP and Port aliases have been implemented in pfSense.
+
+<img width="1273" height="851" alt="Screenshot 2026-08-26 145350" src="https://github.com/user-attachments/assets/fe6103d4-5c10-4ed5-acf9-b7da0aa379b8" />
+
+<img width="1471" height="1069" alt="Screenshot 2026-08-26 145414" src="https://github.com/user-attachments/assets/c6b3c16c-33a8-469f-92bd-ba5900533922" />
 
