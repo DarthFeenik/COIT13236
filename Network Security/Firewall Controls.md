@@ -63,123 +63,225 @@ The Visitor network `192.168.20.0` is intentionally excluded so that visitor tra
 | `WEB_PORTS` | 80, 443 | HTTP and HTTPS | Implemented |
 | `DNS_PORT` | 53 | DNS | Implemented |
 | `MANAGEMENT_PORTS` | 22, 443 | SSH and HTTPS management | Implemented |
+| `PRINT_PORTS` | 631, 9100, 515 | IPP, RAW/JetDirect and LPD/LPR printing | Implemented |
 
-## Planned Firewall Rule Matrix
+## Firewall Rule Matrix
 
-| Rule | Source | Destination | Service | Action | Logging |
-|---|---|---|---|---|---|
-| R01 | Visitor Network | Internet | HTTP/HTTPS/DNS | Allow | No |
-| R02 | Employee LAN | Internet | Required Internet Traffic | Allow | No |
-| R03 | Employee Wi-Fi | Internet | Required Internet Traffic | Allow | No |
-| R04 | Visitor Network | Internal Networks | Any | Block | Enabled |
-| R05 | Employee LAN | Management Network | Any | Block | Enabled |
-| R06 | Employee Wi-Fi | Management Network | Any | Block | Enabled |
-| R07 | Employee LAN | Server Network | Required Services | Allow | TBC |
-| R08 | Employee Wi-Fi | Server Network | Required Services | Allow | TBC |
-| R09 | Employee LAN / Wi-Fi | Printer Network | Required Printing Services | Allow | TBC |
-| R10 | Management Network | Network Infrastructure | SSH/HTTPS | Allow | TBC |
-| R11 | IoT Network | Internal Networks | Any not explicitly required | Block | Enabled |
-| R12 | CCTV Network | Required Server Services | Required Services | Allow | TBC |
-| R13 | Backup Network | Server Network | Backup/Replication Services | Allow | TBC |
-| R14 | Video Network | Required Services / Internet | Video Conferencing Traffic | Allow | TBC |
+| Rule | Source | Destination | Service | Action | Logging | Status |
+|---|---|---|---|---|---|---|
+| R01a | Visitor Network | Internet | HTTP/HTTPS (`WEB_PORTS`) | Allow | No | Implemented and Tested |
+| R01b | Visitor Network | Internet | DNS (`DNS_PORT`) | Allow | No | Implemented and Tested |
+| R02a | Employee LAN | Internet | HTTP/HTTPS (`WEB_PORTS`) | Allow | No | Implemented and Tested |
+| R02b | Employee LAN | Internet | DNS (`DNS_PORT`) | Allow | No | Implemented and Tested |
+| R03a | Employee Wi-Fi | Internet | HTTP/HTTPS (`WEB_PORTS`) | Allow | No | Implemented, Not Yet Tested |
+| R03b | Employee Wi-Fi | Internet | DNS (`DNS_PORT`) | Allow | No | Implemented, Not Yet Tested |
+| R04 | Visitor Network | Internal Networks | Any | Block | Enabled | Implemented and Tested |
+| R05 | Employee LAN | Management Network | Any | Block | Enabled | Implemented and Tested |
+| R06 | Employee Wi-Fi | Management Network | Any | Block | Enabled | Implemented, Not Yet Tested |
+| R07 | Employee LAN | Server Network | Required Services | Allow | TBC | Planned |
+| R08 | Employee Wi-Fi | Server Network | Required Services | Allow | TBC | Planned |
+| R09a | Employee LAN | Printer Network | `PRINT_PORTS` | Allow | No | Implemented, Not Yet Tested |
+| R09b | Employee Wi-Fi | Printer Network | `PRINT_PORTS` | Allow | No | Implemented, Not Yet Tested |
+| R10 | Management Network | Network Infrastructure | `MANAGEMENT_PORTS` | Allow | TBC | Planned |
+| R11 | IoT Network | Internal Networks | Any | Block | Enabled | Implemented, Not Yet Tested |
+| R12a | CCTV Network | Server Network | Required Services | Allow | TBC | Planned |
+| R12b | CCTV Network | Internal Networks | Any unauthorised traffic | Block | Enabled | Implemented, Not Yet Tested |
+| R13a | Backup Network | Server Network | Backup/Replication Services | Allow | TBC | Planned |
+| R13b | Backup Network | Any | Any unauthorised traffic | Block | Enabled | Implemented, Not Yet Tested |
+| R14 | Video Network | Required Services / Internet | Video Conferencing Traffic | Allow | TBC | Planned |
 
-## Planned pfSense Rules
+## pfSense Firewall Rules
 
-### R01 - Visitor Internet Access
+### R01a - Visitor Web Access
 
-| pfSense Setting | Planned Configuration |
+**Status:** Implemented and Tested
+
+| pfSense Setting | Configuration |
 |---|---|
-| Rule ID | R01 |
+| Rule ID | R01a |
 | Action | Pass |
 | Interface | VLAN 20 - Visitor |
 | Address Family | IPv4 |
-| Protocol / Service | TCP/UDP as required |
-| Source | `VISITOR_NETWORK` |
-| Destination | Internet |
-| Destination Port | `WEB_PORTS`, `DNS_PORT` |
+| Protocol | TCP |
+| Source | `VISITOR_VLAN subnets` |
+| Destination | Any |
+| Destination Port | `WEB_PORTS` |
 | Logging | No |
-| Description | Allow Visitor Internet Access |
+| Description | Allow Visitor Web Access |
 
-Visitor traffic will first be blocked from `INTERNAL_NETWORKS` before permitted Internet services are allowed.
+This rule permits HTTP and HTTPS traffic from the Visitor network. HTTP and HTTPS connectivity was successfully tested from `VisitorLinux` using ports 80 and 443.
 
-### R02 - Employee LAN Internet Access
+---
 
-| pfSense Setting | Planned Configuration |
+### R01b - Visitor DNS Access
+
+**Status:** Implemented and Tested
+
+| pfSense Setting | Configuration |
 |---|---|
-| Rule ID | R02 |
+| Rule ID | R01b |
+| Action | Pass |
+| Interface | VLAN 20 - Visitor |
+| Address Family | IPv4 |
+| Protocol | TCP/UDP |
+| Source | `VISITOR_VLAN subnets` |
+| Destination | Any |
+| Destination Port | `DNS_PORT` |
+| Logging | No |
+| Description | Allow Visitor DNS |
+
+DNS resolution was successfully tested from the Visitor network.
+
+---
+
+### R02a - Employee LAN Web Access
+
+**Status:** Implemented and Tested
+
+| pfSense Setting | Configuration |
+|---|---|
+| Rule ID | R02a |
 | Action | Pass |
 | Interface | VLAN 10 - Employee LAN |
 | Address Family | IPv4 |
-| Source | `EMPLOYEE_LAN` |
-| Destination | Internet |
-| Destination Port | Required Services |
-| Logging | TBC |
-| Description | Allow Employee LAN Internet Access |
+| Protocol | TCP |
+| Source | `EMPLOYEE_VLAN subnets` |
+| Destination | Any |
+| Destination Port | `WEB_PORTS` |
+| Logging | No |
+| Description | Allow Employee Web Access |
 
-### R03 - Employee Wi-Fi Internet Access
+HTTP and HTTPS connectivity was successfully tested from `EmployeeLinux` using ports 80 and 443.
 
-| pfSense Setting | Planned Configuration |
+---
+
+### R02b - Employee LAN DNS Access
+
+**Status:** Implemented and Tested
+
+| pfSense Setting | Configuration |
 |---|---|
-| Rule ID | R03 |
+| Rule ID | R02b |
+| Action | Pass |
+| Interface | VLAN 10 - Employee LAN |
+| Address Family | IPv4 |
+| Protocol | TCP/UDP |
+| Source | `EMPLOYEE_VLAN subnets` |
+| Destination | Any |
+| Destination Port | `DNS_PORT` |
+| Logging | No |
+| Description | Allow Employee DNS |
+
+DNS resolution was successfully tested from the Employee LAN.
+
+---
+
+### R03a - Employee Wi-Fi Web Access
+
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
+|---|---|
+| Rule ID | R03a |
 | Action | Pass |
 | Interface | VLAN 11 - Employee Wi-Fi |
 | Address Family | IPv4 |
-| Source | `EMPLOYEE_WIFI` |
-| Destination | Internet |
-| Destination Port | Required Services |
-| Logging | TBC |
-| Description | Allow Employee Wi-Fi Internet Access |
+| Protocol | TCP |
+| Source | `EMPLOYEE_WIFI_VLAN subnets` |
+| Destination | Any |
+| Destination Port | `WEB_PORTS` |
+| Logging | No |
+| Description | Allow Employee WiFi Web Access |
+
+---
+
+### R03b - Employee Wi-Fi DNS Access
+
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
+|---|---|
+| Rule ID | R03b |
+| Action | Pass |
+| Interface | VLAN 11 - Employee Wi-Fi |
+| Address Family | IPv4 |
+| Protocol | TCP/UDP |
+| Source | `EMPLOYEE_WIFI_VLAN subnets` |
+| Destination | Any |
+| Destination Port | `DNS_PORT` |
+| Logging | No |
+| Description | Allow Employee WiFi DNS |
+
+---
 
 ### R04 - Block Visitor Access to Internal Networks
 
-| pfSense Setting | Planned Configuration |
+**Status:** Implemented and Tested
+
+| pfSense Setting | Configuration |
 |---|---|
 | Rule ID | R04 |
 | Action | Block |
 | Interface | VLAN 20 - Visitor |
 | Address Family | IPv4 |
 | Protocol | Any |
-| Source | `VISITOR_NETWORK` |
+| Source | `VISITOR_VLAN subnets` |
 | Destination | `INTERNAL_NETWORKS` |
 | Destination Port | Any |
 | Logging | Enabled |
 | Description | Block Visitor Access to Internal Networks |
 
-`R04 BLOCK VISITOR_NETWORK -> INTERNAL_NETWORKS ANY`
+`R04 BLOCK VISITOR_VLAN -> INTERNAL_NETWORKS ANY`
 
-This rule prevents visitors from accessing employee, server, printer, CCTV, IoT, backup and management networks.
+This rule prevents Visitor devices from accessing the Employee, Employee Wi-Fi, Printer, Video Conferencing, CCTV, IoT, Server, Backup and Management networks.
+
+Testing confirmed that Visitor traffic to Employee, Management and Server networks was blocked. The denied connections were also recorded in the pfSense firewall logs.
+
+---
 
 ### R05 - Block Employee LAN Access to Management
 
-| pfSense Setting | Planned Configuration |
+**Status:** Implemented and Tested
+
+| pfSense Setting | Configuration |
 |---|---|
 | Rule ID | R05 |
 | Action | Block |
 | Interface | VLAN 10 - Employee LAN |
 | Address Family | IPv4 |
 | Protocol | Any |
-| Source | `EMPLOYEE_LAN` |
+| Source | `EMPLOYEE_VLAN subnets` |
 | Destination | `MANAGEMENT_NETWORK` |
 | Destination Port | Any |
 | Logging | Enabled |
-| Description | Block Employee LAN Access to Management |
+| Description | Block Employee Access to Management |
+
+Testing from `192.168.10.71` to the Management gateway `192.168.99.1` timed out as expected. pfSense recorded the denied traffic against the R05 rule.
+
+---
 
 ### R06 - Block Employee Wi-Fi Access to Management
 
-| pfSense Setting | Planned Configuration |
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
 |---|---|
 | Rule ID | R06 |
 | Action | Block |
 | Interface | VLAN 11 - Employee Wi-Fi |
 | Address Family | IPv4 |
 | Protocol | Any |
-| Source | `EMPLOYEE_WIFI` |
+| Source | `EMPLOYEE_WIFI_VLAN subnets` |
 | Destination | `MANAGEMENT_NETWORK` |
 | Destination Port | Any |
 | Logging | Enabled |
-| Description | Block Employee Wi-Fi Access to Management |
+| Description | Block Employee WiFi Access to Management |
+
+---
 
 ### R07 - Employee LAN Access to Servers
+
+**Status:** Planned
 
 | pfSense Setting | Planned Configuration |
 |---|---|
@@ -194,7 +296,13 @@ This rule prevents visitors from accessing employee, server, printer, CCTV, IoT,
 | Logging | TBC |
 | Description | Allow Required Employee LAN Access to Servers |
 
+The required server services have not yet been confirmed, so this rule will remain restricted until the necessary ports are identified.
+
+---
+
 ### R08 - Employee Wi-Fi Access to Servers
+
+**Status:** Planned
 
 | pfSense Setting | Planned Configuration |
 |---|---|
@@ -209,22 +317,53 @@ This rule prevents visitors from accessing employee, server, printer, CCTV, IoT,
 | Logging | TBC |
 | Description | Allow Required Employee Wi-Fi Access to Servers |
 
-### R09 - Employee Access to Printers
+The required server services have not yet been confirmed.
 
-| pfSense Setting | Planned Configuration |
+---
+
+### R09a - Employee LAN Access to Printers
+
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
 |---|---|
-| Rule ID | R09 |
+| Rule ID | R09a |
 | Action | Pass |
-| Interface | Employee LAN / Employee Wi-Fi |
+| Interface | VLAN 10 - Employee LAN |
 | Address Family | IPv4 |
-| Protocol | TBC |
-| Source | `EMPLOYEE_LAN` / `EMPLOYEE_WIFI` |
+| Protocol | TCP |
+| Source | `EMPLOYEE_VLAN subnets` |
 | Destination | `PRINTER_NETWORK` |
-| Destination Port | TBC - Required Printing Services |
-| Logging | TBC |
-| Description | Allow Employees to Access Network Printers |
+| Destination Port | `PRINT_PORTS` |
+| Logging | No |
+| Description | Allow Employee LAN to Printers |
+
+The `PRINT_PORTS` alias contains the required common network printing services.
+
+---
+
+### R09b - Employee Wi-Fi Access to Printers
+
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
+|---|---|
+| Rule ID | R09b |
+| Action | Pass |
+| Interface | VLAN 11 - Employee Wi-Fi |
+| Address Family | IPv4 |
+| Protocol | TCP |
+| Source | `EMPLOYEE_WIFI_VLAN subnets` |
+| Destination | `PRINTER_NETWORK` |
+| Destination Port | `PRINT_PORTS` |
+| Logging | No |
+| Description | Allow Employee WiFi to Printers |
+
+---
 
 ### R10 - Management Access to Network Infrastructure
+
+**Status:** Planned
 
 | pfSense Setting | Planned Configuration |
 |---|---|
@@ -239,54 +378,118 @@ This rule prevents visitors from accessing employee, server, printer, CCTV, IoT,
 | Logging | TBC |
 | Description | Allow Management Access to Network Infrastructure |
 
+The final infrastructure addresses will be added once the routers, switches and access points used by the project are confirmed.
+
+---
+
 ### R11 - Restrict IoT Network
 
-| pfSense Setting | Planned Configuration |
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
 |---|---|
 | Rule ID | R11 |
 | Action | Block |
 | Interface | VLAN 50 - IoT |
 | Address Family | IPv4 |
 | Protocol | Any |
-| Source | `IOT_NETWORK` |
+| Source | `IOT_VLAN subnets` |
 | Destination | `INTERNAL_NETWORKS` |
 | Destination Port | Any |
 | Logging | Enabled |
-| Description | Block Unauthorised IoT Access to Internal Networks |
+| Description | Block IoT Access to Internal Networks |
 
+This rule prevents IoT devices from initiating unauthorised communication with internal PCM networks. Specific required services can later be permitted above this rule if necessary.
 
-### R12 - CCTV Access to Required Server Services
+---
+
+### R12a - CCTV Access to Required Server Services
+
+**Status:** Planned
 
 | pfSense Setting | Planned Configuration |
 |---|---|
-| Rule ID | R12 |
+| Rule ID | R12a |
 | Action | Pass |
 | Interface | VLAN 41 - CCTV |
 | Address Family | IPv4 |
 | Protocol | TBC |
 | Source | `CCTV_NETWORK` |
 | Destination | `SERVER_NETWORK` |
-| Destination Port | TBC |
+| Destination Port | TBC - Required CCTV Services |
 | Logging | TBC |
 | Description | Allow CCTV Traffic to Required Server Services |
 
-### R13 - Backup Network Access
+The required CCTV services and ports have not yet been confirmed.
+
+---
+
+### R12b - Block Unauthorised CCTV Internal Access
+
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
+|---|---|
+| Rule ID | R12b |
+| Action | Block |
+| Interface | VLAN 41 - CCTV |
+| Address Family | IPv4 |
+| Protocol | Any |
+| Source | `CCTV_VLAN subnets` |
+| Destination | `INTERNAL_NETWORKS` |
+| Destination Port | Any |
+| Logging | Enabled |
+| Description | Block Unauthorised CCTV Internal Access |
+
+Specific CCTV server traffic can later be permitted above this restriction when the required services are confirmed.
+
+---
+
+### R13a - Backup Network Access
+
+**Status:** Planned
 
 | pfSense Setting | Planned Configuration |
 |---|---|
-| Rule ID | R13 |
+| Rule ID | R13a |
 | Action | Pass |
 | Interface | VLAN 91 - Backup |
 | Address Family | IPv4 |
 | Protocol | TBC |
 | Source | `BACKUP_NETWORK` |
 | Destination | `SERVER_NETWORK` |
-| Destination Port | TBC |
+| Destination Port | TBC - Backup/Replication Services |
 | Logging | TBC |
 | Description | Allow Required Backup and Replication Traffic |
 
+The backup and replication services have not yet been confirmed.
+
+---
+
+### R13b - Block Unauthorised Backup Traffic
+
+**Status:** Implemented, Not Yet Tested
+
+| pfSense Setting | Configuration |
+|---|---|
+| Rule ID | R13b |
+| Action | Block |
+| Interface | VLAN 91 - Backup |
+| Address Family | IPv4 |
+| Protocol | Any |
+| Source | `BACKUP_VLAN subnets` |
+| Destination | Any |
+| Destination Port | Any |
+| Logging | Enabled |
+| Description | Block Unauthorised Backup Traffic |
+
+Required backup and replication services can later be permitted above this rule.
+
+---
 
 ### R14 - Video Conferencing Access
+
+**Status:** Planned
 
 | pfSense Setting | Planned Configuration |
 |---|---|
@@ -301,7 +504,26 @@ This rule prevents visitors from accessing employee, server, printer, CCTV, IoT,
 | Logging | TBC |
 | Description | Allow Video Conferencing Traffic |
 
+The final conferencing services and required ports have not yet been confirmed. Higher QoS may later be applied to video conferencing traffic to prioritise voice and video traffic.
+
 Higher QoS may later be applied to video conferencing traffic to prioritise voice and video services.
+
+## Firewall Validation
+
+Firewall controls were tested using Employee and Visitor clients connected through Open vSwitch to the pfSense firewall. Testing included permitted Internet services and blocked communication between restricted VLANs.
+
+| Test | Source | Destination | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| Employee DNS | `192.168.10.72` | External DNS | Allowed | DNS query successfully resolved `example.com` | Pass |
+| Employee HTTP | `192.168.10.72` | Internet | Allowed | HTTP request returned `HTTP/1.1 200 OK` | Pass |
+| Employee HTTPS | `192.168.10.72` | Internet | Allowed | HTTPS request returned `HTTP/2 200` | Pass |
+| Visitor DNS | `192.168.20.72` | External DNS | Allowed | DNS query successfully resolved `example.com` | Pass |
+| Visitor HTTP | `192.168.20.72` | Internet | Allowed | HTTP request returned `HTTP/1.1 200 OK` | Pass |
+| Visitor HTTPS | `192.168.20.72` | Internet | Allowed | HTTPS request returned `HTTP/2 200` | Pass |
+| Visitor to Employee | `192.168.20.72` | `192.168.10.72` | Blocked | Connection timed out and was logged by R04 | Pass |
+| Visitor to Management | `192.168.20.71` | `192.168.99.1` | Blocked | Connection timed out and was logged | Pass |
+| Visitor to Server VLAN Gateway | `192.168.20.71` | `192.168.90.1` | Blocked | Connection timed out and was logged | Pass |
+| Employee to Management | `192.168.10.71` | `192.168.99.1` | Blocked | Connection timed out and was logged by R05 | Pass |
 
 ## Current Implementation Status
 
