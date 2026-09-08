@@ -1,5 +1,5 @@
 
-# Prime Core Metals LAN switch port allocation tables
+# Prime Core Minerals LAN switch port allocation tables
 
 
 ## PCM-SITEA-SW01 - IP Address = 192.168.199.10
