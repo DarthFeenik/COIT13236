@@ -1,5 +1,10 @@
 
 # Prime Core Minerals LAN switch port allocation tables
+Below is the LAN switch port allocation. This maps what port is connected to which device and the vlan committed to which port.
+In EVE-NG, PCM-BNE-SW01, PCM-BNE-SW02, PCM-SITEA-SW01, PCM-SITEA-SW02 and PCMSITEB-SW01 setup. 
+PCMSITEC-SW01 and PCMSITED-SW01 are a replication of PCM-SITEB-SW01 with only their hostname and switch IP address changing.
+
+
 
 ## Brisbane Office
 ### PCM-BNE-SW01 - IP Address = 192.168.99.10
@@ -36,6 +41,8 @@
 | `10` | E9 | ens12 | trunk=11,20,99 | PCM-BNE-AP02 |
 | `11` | E10 | ens13 | trunk=10,11,20,30,40,41,50,90,91,99 | PCM-BNE-SW02 |
 | `12` | E11 | ens14 | trunk=10,11,20,30,40,41,50,90,91,99 | pfsense |
+
+
 
 
 ## Site Offices
