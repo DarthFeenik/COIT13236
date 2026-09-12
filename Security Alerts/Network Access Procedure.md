@@ -55,9 +55,9 @@ The monitoring service records and routes detections. The IT Administrator owns 
 Notification and fallback
 Send High and Critical detections immediately through SEC-03, including source IP, destination, port, firewall action and related user where known. If the monitoring or email service is unavailable, use the backup contact channel and preserve local logs for later reconciliation.
  
-## Validation and operating record
+# Validation and operating record
 
-###Acceptance tests
+## Acceptance tests
 
 
 | Controlled test |	Expected result |
