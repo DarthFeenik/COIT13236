@@ -16,12 +16,14 @@ Operating baseline: approve the proposed thresholds and response targets before 
 Forward relevant pfSense firewall and system logs to the central monitoring service. Collect remote-access authentication, DHCP or device inventory records, and server login records where available. Log relevant firewall rules explicitly. Traffic between devices on the same network segment may not pass through pfSense; use endpoint or switch evidence for that activity.
 
 
-Detection condition	Initial severity
-10 blocked attempts from one internal device to protected services in 5 minutes	Medium
-5 failed remote or administrative logins for one account in 5 minutes	High
-Successful administrative access from an unapproved source, or confirmed unauthorised access	High
-Active lateral movement, widespread compromise or destructive activity	Critical
-One blocked connection or newly observed device without other indicators	Low; validate against inventory
+| Detection condition	| Initial severity |
+| 10 blocked attempts from one internal device to protected services in 5 minutes	| Medium |
+| 5 failed remote or administrative logins for one account in 5 minutes	| High |
+| Successful administrative access from an unapproved source, or confirmed unauthorised access	| High |
+| Active lateral movement, widespread compromise or destructive activity	| Critical |
+| One blocked connection or newly observed device without other indicators	| Low; validate against inventory |
+
+
 These are proposed starting thresholds. A blocked connection or unfamiliar IP alone does not prove compromise. Correlate source, destination, account, asset ownership and approved changes; use SEC-05 for authentication correlation.
 Responsibilities
 The monitoring service records and routes detections. The IT Administrator owns triage and containment. The nominated backup administrator takes over missed acknowledgements under SEC-03. The project lead approves wider service disruption and accepts residual risk.
