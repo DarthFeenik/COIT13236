@@ -109,7 +109,7 @@ The Visitor network `192.168.20.0` is intentionally excluded so that visitor tra
 | Logging | No |
 | Description | Allow Visitor Web Access |
 
-This rule permits HTTP and HTTPS traffic from the Visitor network. HTTP and HTTPS connectivity was successfully tested from `VisitorLinux` using ports 80 and 443.
+This rule permits HTTP and HTTPS traffic from the Visitor network. HTTP and HTTPS connectivity was successfully tested from VisitorLinux using ports 80 and 443.
 
 ---
 
@@ -151,7 +151,7 @@ DNS resolution was successfully tested from the Visitor network.
 | Logging | No |
 | Description | Allow Employee Web Access |
 
-HTTP and HTTPS connectivity was successfully tested from `EmployeeLinux` using ports 80 and 443.
+HTTP and HTTPS connectivity was successfully tested from EmployeeLinux using ports 80 and 443.
 
 ---
 
@@ -525,14 +525,20 @@ Firewall controls were tested using Employee and Visitor clients connected throu
 | Visitor to Server VLAN Gateway | `192.168.20.71` | `192.168.90.1` | Blocked | Connection timed out and was logged | Pass |
 | Employee to Management | `192.168.10.71` | `192.168.99.1` | Blocked | Connection timed out and was logged by R05 | Pass |
 
-## Current Implementation Status
-
-The IP and Port aliases have been implemented in pfSense.
-
-- pfSense web page showing the firewall aliases ports configured for services such as, web traffic, DNS, SSH and HTTPS. 
-- pfSense web page showing the firewall aliases IPs configured for the VLAN networks. The `INTERNAL_NETWORK` alias groups together the PCM networks. 
+## Current Implementation Evidence  
 
 <img width="800" alt="Screenshot 2026-08-26 145350" src="https://github.com/user-attachments/assets/fe6103d4-5c10-4ed5-acf9-b7da0aa379b8" />
 
+- pfSense web page showing the firewall aliases ports configured for services such as, web traffic, DNS, SSH and HTTPS.
 
 <img width="800" alt="Screenshot 2026-08-26 145414" src="https://github.com/user-attachments/assets/c6b3c16c-33a8-469f-92bd-ba5900533922" />
+
+- pfSense web page showing the firewall aliases IPs configured for the VLAN networks. The INTERNAL_NETWORK alias groups together the PCM networks.
+
+<img width="800" alt="Visitor R04 blocked in system logs" src="https://github.com/user-attachments/assets/3f191500-7e64-4064-94c4-98acf31e9774" />
+
+- Visitor R04 blocked in system logs
+
+<img width="451" height="158" alt="Visitor VLAN 20 not able to reach Employee VLAN 10" src="https://github.com/user-attachments/assets/12e3e2dc-1210-4c35-a3ff-66461eceb66c" />
+
+- Visitor VLAN 20 not able to reach Employee VLAN 10
