@@ -4,7 +4,7 @@
 # COIT13236  |  Security monitoring and incident response
 
 
-# SEC-02  |  Version 1.0  |  
+# SEC-02  |  Version 1.0  |  9 September 2026
 
 
 Owner: IT Administrator  |  Approval: __________________  |  Effective date: __________
