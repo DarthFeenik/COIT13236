@@ -22,7 +22,7 @@ Operating baseline: approve the proposed thresholds and response targets before 
 Maintain a protected-share register with share path, host, data owner, authorised groups and permitted changes. Configure Samba file auditing for selected successful and failed operations, and forward records centrally. Record user, client IP, share, operation, result and path. Use host auditing for local changes that bypass Samba.
 
 
-Samba full_audit records selected operations; it does not itself send administrator email or guarantee complete coverage of every access denial. Validate authentication failures and share-level denials separately. Match operation names to the installed Samba version and test share access after configuration changes; unsupported names can prevent access. [1]
+Samba full_audit records selected operations; it does not itself send administrator email or guarantee complete coverage of every access denial. Validate authentication failures and share-level denials separately. Match operation names to the installed Samba version and test share access after configuration changes; unsupported names can prevent access.
 
 
 | Proposed detection condition	| Initial severity |
