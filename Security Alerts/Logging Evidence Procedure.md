@@ -73,8 +73,11 @@ These are project operating values for approval, not statutory retention claims.
 ## Operational health checks
 
 •	Use a heartbeat or synthetic test at least every 5 minutes for critical sources. Raise High if two expected heartbeats are missed; event silence alone may be legitimate.
+
 •	Check collection queues, parser failures, archive jobs and available space daily. Raise Medium at 80 percent storage use and High at 90 percent or when logging stops.
+
 •	Restrict collector administration and record changes. Keep logging credentials separate from ordinary user accounts and monitor deletion or audit shutdown.
+
 •	During collector failure, preserve source logs, restore collection, reconcile gaps and explicitly document any UDP messages that cannot be recovered.
 
 
