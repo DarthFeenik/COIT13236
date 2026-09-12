@@ -17,6 +17,7 @@ Forward relevant pfSense firewall and system logs to the central monitoring serv
 
 
 | Detection condition	| Initial severity |
+| ------------------- | ---------------- |
 | 10 blocked attempts from one internal device to protected services in 5 minutes	| Medium |
 | 5 failed remote or administrative logins for one account in 5 minutes	| High |
 | Successful administrative access from an unapproved source, or confirmed unauthorised access	| High |
