@@ -33,7 +33,7 @@ Samba full_audit records selected operations; it does not itself send administra
 | 50 distinct files deleted or renamed by one user in 5 minutes	| High |
 | 100 distinct files read by one user in 5 minutes outside its approved baseline	| Medium |
 | Active widespread encryption or destructive file changes	| Critical |
- 
+
 ## Investigation and response
 
 1. Create and acknowledge an incident under SEC-03. Preserve matching raw audit events and identify the share, user, client, operation, result and affected time range.
