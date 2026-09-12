@@ -1,7 +1,7 @@
 # Unauthorised Network Access Detection and Response Procedure
 
 # COIT13236  |  Security monitoring and incident response
-## SEC-01  |  Version 1.0  | 
+## SEC-01  |  Version 1.0  | 9 September 2026
 
 
 Owner: IT Administrator  |  Approval: __________________  |  Effective date: __________
