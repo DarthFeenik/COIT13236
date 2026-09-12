@@ -63,7 +63,7 @@ Send High and Critical detections immediately through SEC-03, including source I
 | Controlled test |	Expected result |
 | --------------- | --------------- |
 | From a test endpoint, attempt access to an explicitly blocked test service	| Connection denied; matching firewall event reaches the collector |
-| Generate the configured repeat threshold against the test service	One correlated alert with correct count, source, destination and severity |
+| Generate the configured repeat threshold against the test service	| One correlated alert with correct count, source, destination and severity |
 | Generate an approved test administrative login from a non-approved test source	| High alert; approval context can be recorded without deleting evidence |
 | Simulate a missed administrator acknowledgement	| Backup escalation occurs within SEC-03 target |
 | Restore test endpoint access after containment	| Authorised traffic works; monitoring remains active |
@@ -82,6 +82,14 @@ Each working day, review unresolved alerts and source health. Weekly, compare un
 
 
 Incident ID: __________  Owner: __________  Severity: __________
+
+
 Detected and acknowledged: __________  Source and destination: __________
+
+
 Evidence location: __________  Containment and rollback: __________
+
+
 Recovery test: __________  Closure reviewer and date: __________
+
+
