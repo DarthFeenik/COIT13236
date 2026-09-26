@@ -46,7 +46,7 @@ Authentication proves identity; authorisation determines which resource and oper
 ## Monitoring and review
 
 Review privileged membership monthly and all resource memberships each term or every three months, whichever is sooner. Owners must confirm continuing need. Retain access requests, approvals, effective permission tests and removal records in a restricted register. Use the proposed SEC-04 schedule for associated security logs.
-Proposed ordinary-account lockout is 10 failures in 15 minutes with a 15 minute lockout, subject to supported settings and testing. The separate proposed authentication alert is five failures in five minutes. Neither threshold is proven by the existing R06 network block alert. Never unlock an account until identity and the failure source are checked. [S5]
+Proposed ordinary-account lockout is 10 failures in 15 minutes with a 15 minute lockout, subject to supported settings and testing. The separate proposed authentication alert is five failures in five minutes. Neither threshold is proven by the existing R06 network block alert. Never unlock an account until identity and the failure source are checked.
 
 
 ## Acceptance and evidence
@@ -57,10 +57,6 @@ The owner accepts implementation after one allowed and one denied test for each 
 
 The owner reviews this document every six months and after a significant incident or system change. Record exceptions with the affected asset, business reason, risk, compensating control, approver and expiry. Approval does not replace a successful implementation test.
 
-## References and linked artefacts
 
-[S1] HQ Network Addressing Artefact.md, project deliverables, evidence dated 13 September 2026.
-[S3] Security_Test_Results.md, project deliverables, 13 September 2026, tests T01 to T05 and their evidence limitations.
-[S5] SEC-01 to SEC-05 procedures: 01_Network_Access_Procedure.docx; 02_Shared_File_Procedure.docx; 03_Notification_Escalation_Procedure.docx; 04_Logging_Evidence_Procedure.docx; 05_Authentication_Lockout_Procedure.docx. Proposed operating requirements are distinct from implemented controls.
 
 
