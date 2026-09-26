@@ -13,7 +13,7 @@ Implement and validate role based access for PrimeCore users, shared files and n
 
 ## Baseline and prerequisites
 
-HQ-EMP-LAPTOP uses 192.168.11.100 on VLAN 11. HQ-MONITOR uses 192.168.90.60 on VLAN 90. R06 blocks the tested IPv4 ICMP path to management gateway 192.168.99.1, tracker 1787829015. T01 correlates four blocked requests with four central records. This does not establish application permissions or all management protocols. [S1–S3]
+HQ-EMP-LAPTOP uses 192.168.11.100 on VLAN 11. HQ-MONITOR uses 192.168.90.60 on VLAN 90. R06 blocks the tested IPv4 ICMP path to management gateway 192.168.99.1, tracker 1787829015. T01 correlates four blocked requests with four central records. This does not establish application permissions or all management protocols.
 Before identity changes, record the actual Samba AD domain, domain controller, file server, share paths and supported versions. Confirm recoverable identity backups, a working emergency administrator and a change window. The group names below are proposed naming conventions, not discovered directory objects.
 
 | Proposed group	| Access purpose	| Approver |
