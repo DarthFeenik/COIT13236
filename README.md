@@ -20,26 +20,26 @@
 PrimeCore Minerals currently operates flat networks at its Brisbane headquarters and mine-site offices, with each site using independent internet connections. As the company expands, the existing network does not provide sufficient security, scalability or resilience for additional employees, contractors and visitors.\
 
 The current network creates multiple problems:
--
--
--
--
+- Limited separation between employees, contractors, visitors and internal systems
+- Limited visibility of network activity and security events
+- Separate site connections provide limited resilience if a connection fails
+- The current setup would become harder to manage as more sites and users are added
 
 ## Minimum Viable Outcome (MVP)
 
-* [ ] Two fully built and routed sites: Brisbane HQ and Mine-Site Office A
-* [ ] Network segmentation using Employee, Visitor/Contractor and Management VLANs
-* [ ] Firewall rules enforcing cross-segment policies
-* [ ] Visitor network with internet access only
-* [ ] Employee login and access control
-* [ ] Live demo: permitted vs. denied cross-segment traffic (denied paths logged)
-* [ ] Centralised monitoring and logging
+* [X] Two fully built and routed sites: Brisbane HQ and Mine-Site Office A
+* [X] Network segmentation using Employee, Visitor/Contractor and Management VLANs
+* [X] Firewall rules enforcing cross-segment policies
+* [X] Visitor network with internet access only
+* [X] Employee login and access control
+* [X] Live demo: permitted vs. denied cross-segment traffic (denied paths logged)
+* [X] Centralised monitoring and logging
 
 ## Stretch Goals
 
-* [ ] Site-to-Site (S2S) VPN with failover
+* [X] Site-to-Site (S2S) VPN with failover
 * [ ] Network Access Control (NAC) using 802.1X / RADIUS
-* [ ] Traffic prioritisation and QoS
+* [X] Traffic prioritisation and QoS
 * [ ] Ansible-based configuration management
 * [ ] Simulated attack scenario + remediation walkthrough
 
